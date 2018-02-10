@@ -47,11 +47,11 @@ app.post('/', (req, res, next) => {
                     isColOriented: false,
                     omitEmtpyFields: false
                 }
+                console.log(fs.readFileSync(dir + excelFile.name));
                 convertExcel(dir + excelFile.name, null, options, (err, data) => {
                     if (err) {
                         res.render('index', {message: {error: true, text: 'Excel file parse error!'}});
                     }else {
-                        console.log(JSON.stringify(data));
                         let finalProducts = [];
                         let productsWithValidSizes = data.filter(obj => obj.Size != ""); //filter out products with invalid sizes
                         let groupedProducts = [];
