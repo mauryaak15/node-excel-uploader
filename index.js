@@ -51,6 +51,7 @@ app.post('/', (req, res, next) => {
                     if (err) {
                         res.render('index', {message: {error: true, text: 'Excel file parse error!'}});
                     }else {
+                        console.log('reached here!');
                         let finalProducts = [];
                         let productsWithValidSizes = data.filter(obj => obj.Size != ""); //filter out products with invalid sizes
                         let groupedProducts = [];
