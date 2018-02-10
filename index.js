@@ -6,7 +6,7 @@ const convertExcel = require('excel-as-json').processFile;
 const fileUpload = require('express-fileupload');
 const sqlString = require('sqlstring');
 
-const dir = process.env.OPENSHIFT_DATA_DIR;
+const dir = process.env.OPENSHIFT_DATA_DIR || './';
 
 const app = express();
 
@@ -47,7 +47,7 @@ app.post('/', (req, res, next) => {
                     isColOriented: false,
                     omitEmtpyFields: false
                 }
-                convertExcel('./'+excelFile.name, null, options, (err, data) => {
+                convertExcel(dir + excelFile.name, null, options, (err, data) => {
                     if (err) {
                         res.render('index', {message: {error: true, text: 'Excel file parse error!'}});
                     }else {
