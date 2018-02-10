@@ -9,7 +9,7 @@ const sqlString = require('sqlstring');
 const app = express();
 
 const con = mysql.createConnection({
-    host: "148.66.145.133",
+    host: "glowroad-excel-upload.herokuapp.com",
     user: "firstcopy22",
     password: "Ronaldo7",
     database: "firstcopy"
